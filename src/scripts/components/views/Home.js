@@ -2,6 +2,8 @@ import React    from 'react';
 import axios    from 'axios';
 import { Link } from 'react-router';
 
+import DataStore from './../../stores/DataStore.js';
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -12,11 +14,11 @@ class Home extends React.Component {
     }
 
     componentDidMount(){
-        this.getContent();     
+
     }
 
     render() {
-        let page = this.state.content;
+        let page = DataStore.getDataBySlug('homepage');
        
         return (
             <div>
@@ -32,19 +34,6 @@ class Home extends React.Component {
             :''}
             </div>
         );
-    }
-
-    getContent(){
-        axios.get('http://andreypokrovskiy.com/projects/wp-api/wp-json/wp/v2/pages').then((response) => {
-            response.data.map((page, i)=>{
-                console.log(page.slug)
-                if(page.slug == 'homepage'){
-                    this.setState({content: page});
-                }
-            })
-        }).catch((error) => {
-            console.dir(error);
-        });
     }
 }
 

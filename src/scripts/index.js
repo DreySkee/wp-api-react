@@ -2,6 +2,7 @@ import React 		from 'react';
 import {render} 	from 'react-dom';
 import axios 		from 'axios';
 
+import DataActions 	from './actions/DataActions.js';
 import App 			from './components/app.js';
 import Home 		from './components/views/Home.js';
 import About 		from './components/views/About.js';
@@ -25,7 +26,6 @@ class AppInitializer {
 		return data.map((page, i) => {
 			
 			const component = views[page.acf.template] || views.default;
-			console.log(page)
 			return (
 				<Route
 					getComponent={(nextState, cb) => {
@@ -40,27 +40,21 @@ class AppInitializer {
 		});
 	}
 
-
-	run(){
-		axios.get('http://andreypokrovskiy.com/projects/wp-api/wp-json/wp/v2/pages').then((response) => {
-
+	run() {
+		DataActions.getData((response)=>{
 			render(
-
 				<Router history={browserHistory}>
 					<Route path="/" component={ App } >
 						<IndexRoute component={ Home } />
 
-						{this.buildRoutes(response.data)}
+						{this.buildRoutes(response)}
 					</Route>
 					<Redirect from="*" to="/" />
 			    </Router>
 
 				, document.getElementById('app')
 			);
-
-		}).catch((error) => {
-			console.dir(error);
-		});		
+		});
 	}
 }
 
