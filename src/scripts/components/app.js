@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import Header from './partials/Header.js';
 
 export default class App extends React.Component {
 
@@ -21,25 +21,9 @@ export default class App extends React.Component {
 
 		return (
 			<div className="wrapper">
-				{ React.cloneElement(this.props.children, {contentData: {}})}
+				<Header/>
+				{ React.cloneElement(this.props.children)}
 			</div>
 		);
-	}
-
-	getContent(pathname){
-		axios.get('http://andreypokrovskiy.com/projects/wp-api/wp-json/wp/v2/pages').then((response) => {
-
-			response.data.map((page, i)=>{
-				
-				if(`/${page.slug}` == pathname){
-
-					return page;	
-				}
-				
-			})
-
-		}).catch((error) => {
-			console.dir(error);
-		});
 	}
 }

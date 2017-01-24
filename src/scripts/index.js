@@ -10,7 +10,6 @@ import views 		from './components/views/views.js';
 
 import {
   browserHistory,
-  hashHistory,
   IndexRoute,
   Redirect,
   Route,

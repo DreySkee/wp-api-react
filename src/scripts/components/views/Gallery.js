@@ -1,5 +1,5 @@
 import React    from 'react';
-import axios    from 'axios';
+import DataStore from './../../stores/DataStore.js';
 
 class Gallery extends React.Component {
     constructor(props) {
@@ -11,15 +11,15 @@ class Gallery extends React.Component {
     }
 
     componentDidMount(){
-        this.getContent();    
+       
     }
 
     render() {
-        let page = this.state.content;
+        let page = DataStore.getDataBySlug('gallery');
        
         return (
             <div>
-            {this.state.content ?
+            {page ?
                 <div>
                     <h4>Gallery Template</h4>
                     <h1>{page.title.rendered}</h1>
@@ -28,18 +28,6 @@ class Gallery extends React.Component {
             :''}
             </div>
         );
-    }
-
-    getContent(){
-        axios.get('http://andreypokrovskiy.com/projects/wp-api/wp-json/wp/v2/pages').then((response) => {
-            response.data.map((page, i)=>{
-                if(`/${page.slug}`== this.props.location.pathname){
-                    this.setState({content: page});
-                }
-            })
-        }).catch((error) => {
-            console.dir(error);
-        });
     }
 }
 

@@ -1,5 +1,4 @@
 import React    from 'react';
-import axios    from 'axios';
 import { Link } from 'react-router';
 
 import DataStore from './../../stores/DataStore.js';
@@ -7,14 +6,6 @@ import DataStore from './../../stores/DataStore.js';
 class Home extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-    
-        }
-    }
-
-    componentDidMount(){
-
     }
 
     render() {
@@ -26,10 +17,9 @@ class Home extends React.Component {
                 <div>
                     <h4>Homepage Template</h4>
                     <h1>{page.title.rendered}</h1>
-                    <p>{page.acf.content}</p>
+                    <div dangerouslySetInnerHTML={{__html: page.acf.content}} />
 
-                    <Link activeClassName='active' to='/about'>About</Link> <br />
-                    <Link activeClassName='active' to='/gallery'>Gallery</Link> 
+                    <div dangerouslySetInnerHTML={{__html: page.content.rendered}} />
                 </div>      
             :''}
             </div>
