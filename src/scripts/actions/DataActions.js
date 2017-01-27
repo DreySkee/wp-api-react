@@ -22,23 +22,23 @@ class DataActions {
 
 	getPages(cb = () => {}){
 	    this.api(this.pagesEndPoint).then((response)=>{
-	   		this.getPagesSuccess(response);
-      		cb(response);
+	   		//this.getPagesSuccess(response);
+	   		this.getPosts(response, cb)
+      		//cb(response);
 	   	});
 	}
 
-	getPosts(cb = () => {}){
+	getPosts(pages, cb){
 	    this.api(this.postsEndPoint).then((response)=>{
-	   		this.getPostsSuccess(response);
-      		cb(response);
+	    	const posts 	= response
+	    	const payload 	= { pages, posts };
+
+	   		this.getSuccess(payload);
+      		cb(payload);
 	   	});
 	}
 
-	getPagesSuccess(payload){
-		return payload;
-	}
-
-	getPostsSuccess(payload){
+	getSuccess(payload){
 		return payload;
 	}
 }

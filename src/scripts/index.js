@@ -21,9 +21,7 @@ import {
 class AppInitializer {
 
 	buildRoutes(data) {
-
-		return data.map((page, i) => {
-			
+		return data.pages.map((page, i) => {
 			const component = views[page.acf.template] || views.default;
 			return (
 				<Route
