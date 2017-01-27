@@ -3,9 +3,16 @@ import alt   from './../alt/alt.js';
 
 class DataActions {
 
-	api() {
+	constructor() {
+		const appUrl = 'http://andreypokrovskiy.com/projects/wp-api';
+
+		this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages`;
+		this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts`;
+	}
+
+	api(endPoint) {
 		return new Promise((resolve, reject) => {
-			axios.get('http://andreypokrovskiy.com/projects/wp-api/wp-json/wp/v2/pages').then((response) => {
+			axios.get(endPoint).then((response) => {
 			   	resolve(response.data);
 			}).catch((error) => {
 			    reject(error);
@@ -13,14 +20,25 @@ class DataActions {
 		});		
 	}
 
-	getData(cb = () => {}){
-	    this.api().then((response)=>{
-	   		this.getSuccess(response);
+	getPages(cb = () => {}){
+	    this.api(this.pagesEndPoint).then((response)=>{
+	   		this.getPagesSuccess(response);
       		cb(response);
 	   	});
 	}
 
-	getSuccess(payload){
+	getPosts(cb = () => {}){
+	    this.api(this.postsEndPoint).then((response)=>{
+	   		this.getPostsSuccess(response);
+      		cb(response);
+	   	});
+	}
+
+	getPagesSuccess(payload){
+		return payload;
+	}
+
+	getPostsSuccess(payload){
 		return payload;
 	}
 }

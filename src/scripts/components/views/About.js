@@ -10,8 +10,8 @@ class About extends React.Component {
         }
     }
 
-    render() {
-        let page = DataStore.getDataBySlug('about');
+    render() { 
+        let page = DataStore.getPageBySlug('about');
        
         return (
             <div>

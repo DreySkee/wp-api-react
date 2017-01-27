@@ -9,7 +9,7 @@ class Home extends React.Component {
     }
 
     render() {
-        let page = DataStore.getDataBySlug('homepage');
+        let page = DataStore.getPageBySlug('homepage');
        
         return (
             <div>

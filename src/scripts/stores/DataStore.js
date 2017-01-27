@@ -3,31 +3,46 @@ import DataActions  from './../actions/DataActions.js';
 
 class DataStore {
 	constructor() {
-		this.data = {};
+		this.pages = {};
+		this.posts = {};
 
 		this.bindListeners({
-			handleGetData: DataActions.GET_SUCCESS
+			handleGetPages: DataActions.GET_PAGES_SUCCESS,
+			handleGetPosts: DataActions.GET_POSTS_SUCCESS
 		});
 
 		this.exportPublicMethods({
-			getAll: this.getAll,
-			getDataBySlug: this.getDataBySlug
+			getAllPages: this.getAllPages,
+			getPageBySlug: this.getPageBySlug
 		});
 	}
 
-	handleGetData(data) {
-		this.setState({ data });
+	// Pages
+
+	handleGetPages(pages) {
+		this.setState({ pages });
 	}
 
-	getAll() { 
-		return this.getState().data; 
+	getAllPages() { 
+		return this.getState().pages; 
 	}
 
-	getDataBySlug(slug){
-		const data = this.getState().data;
-		return data[Object.keys(data).find((dataItem, i) => {
-			return data[dataItem].slug === slug;
+	getPageBySlug(slug){
+		const pages = this.getState().pages;
+		return pages[Object.keys(pages).find((page, i) => {
+			return pages[page].slug === slug;
 		})] || {};
+	}
+
+
+	// Posts
+
+	handleGetPosts(posts) {
+		this.setState({ posts });
+	}
+
+	getAllPosts() { 
+		return this.getState().posts; 
 	}
 }
 

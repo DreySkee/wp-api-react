@@ -15,7 +15,7 @@ class Gallery extends React.Component {
     }
 
     render() {
-        let page = DataStore.getDataBySlug('gallery');
+        let page = DataStore.getPageBySlug('gallery');
        
         return (
             <div>

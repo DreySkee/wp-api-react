@@ -40,7 +40,7 @@ class AppInitializer {
 	}
 
 	run() {
-		DataActions.getData((response)=>{
+		DataActions.getPages((response)=>{
 			render(
 				<Router history={browserHistory}>
 					<Route path="/" component={ App } >
