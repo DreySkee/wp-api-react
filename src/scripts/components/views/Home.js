@@ -1,6 +1,4 @@
 import React    from 'react';
-import { Link } from 'react-router';
-
 import DataStore from './../../stores/DataStore.js';
 
 class Home extends React.Component {

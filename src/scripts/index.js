@@ -1,11 +1,9 @@
 import React 		from 'react';
 import {render} 	from 'react-dom';
-import axios 		from 'axios';
 
 import DataActions 	from './actions/DataActions.js';
 import App 			from './components/app.js';
 import Home 		from './components/views/Home.js';
-import About 		from './components/views/About.js';
 import views 		from './components/views/views.js';
 
 import {
@@ -15,8 +13,6 @@ import {
   Route,
   Router
 } from 'react-router';
-
-
 
 class AppInitializer {
 

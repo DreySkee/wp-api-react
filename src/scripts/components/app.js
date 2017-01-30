@@ -7,18 +7,11 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-			content: {} 
+
         }
     }
 
-	componentDidMount(){
-
-	}
-
-
 	render() {
-		const pathname 	= this.props.location.pathname;
-
 		return (
 			<div className="wrapper">
 				<Header/>

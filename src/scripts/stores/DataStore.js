@@ -6,6 +6,7 @@ class DataStore {
 		this.data = {};
 
 		this.bindListeners({
+			// Listen to the getSuccess() in DataActions.js
 			handleSuccess: DataActions.GET_SUCCESS
 		});
 
@@ -16,20 +17,27 @@ class DataStore {
 		});
 	}
 
-	getAll() { 
-		return this.getState().data; 
-	}
-
-	// Pages
-
+	// Store data returned by getSuccess() in DataActions.js
 	handleSuccess(data) {
 		this.setState({ data });
 	}
 
+	// Returns all pages and posts
+	getAll() { 
+		return this.getState().data; 
+	}
+
+	// Returns all Pages
 	getAllPages() { 
 		return this.getState().data.pages; 
 	}
 
+	// Returns all Posts
+	getAllPosts() { 
+		return this.getState().posts; 
+	}
+
+	// Returns a Page by provided slug
 	getPageBySlug(slug){
 		const pages = this.getState().data.pages;
 		return pages[Object.keys(pages).find((page, i) => {
@@ -37,16 +45,6 @@ class DataStore {
 		})] || {};
 	}
 
-
-	// Posts
-
-	handleGetPosts(posts) {
-		this.setState({ posts });
-	}
-
-	getAllPosts() { 
-		return this.getState().posts; 
-	}
 }
 
 export default alt.createStore(DataStore, 'DataStore');
