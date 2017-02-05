@@ -9,7 +9,7 @@ module.exports = {
 	entry: [
 		'webpack-dev-server/client?http://127.0.0.1:8080/', // Specify the local server port
 		'webpack/hot/only-dev-server', // Enable hot reloading
-		'./src/scripts' // This is where Webpack will be looking for the entry index.js file
+		'./src/index' // This is where Webpack will be looking for the entry index.js file
 	],
 	output: {
 		path: path.join(__dirname, 'public'), // This is used to specify folder for producion bundle. Will not be used here, but it's a good practice to have it 

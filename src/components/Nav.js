@@ -2,13 +2,9 @@ import React    from 'react';
 import { Link } from 'react-router';
 import _        from 'lodash';
 
-import DataStore from './../../stores/DataStore.js';
+import DataStore from './../stores/DataStore.js';
 
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+class Nav extends React.Component {
     render() {
         let allPages = DataStore.getAllPages();
         allPages = _.sortBy(allPages, [function(page) { return page.menu_order; }]);
@@ -23,4 +19,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default Nav;
