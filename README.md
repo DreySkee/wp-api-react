@@ -9,7 +9,12 @@ npm i
 
 To run the project on localhost:8080:
 ```
-webpack-dev-server
+npm start
+```
+
+To build the project into /build folder:
+```
+npm run build
 ```
 
 You need to have webpack and webpack-dev-server installed globally:
